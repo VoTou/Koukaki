@@ -1,0 +1,296 @@
+//Animation de rotation des fleurs
+@keyframes rotation-flowers {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+//Animation d'apparition du logo
+@keyframes apparition-logo {
+  0% {
+    transform: translateY(300px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+//Animation d'apparition du hero header
+@keyframes apparition-hero {
+  0% {
+    transform: translateY(-150px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+// Animation d'effet de flottement
+@keyframes floatAnimation {
+  0% {
+    transform: translate(0, 0);
+  }
+  10% {
+    transform: translate(10px, -5px);
+  }
+  20% {
+    transform: translate(5px, 10px);
+  }
+  30% {
+    transform: translate(-5px, 10px);
+  }
+  40% {
+    transform: translate(-20px, -5px);
+  }
+  50% {
+    transform: translate(-5px, -10px);
+  }
+  60% {
+    transform: translate(5px, -5px);
+  }
+  70% {
+    transform: translate(15px, 5px);
+  }
+  80% {
+    transform: translate(5px, -15px);
+  }
+  90% {
+    transform: translate(-5px, -5px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes showItem {
+  from {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.banner {
+  position: relative;
+  overflow: hidden;
+  .banner-logo {
+    position: absolute;
+  }
+  .banner-video {
+    @media screen and (max-width: 425px) {
+      display: none;
+    }
+  }
+  img {
+    width: auto;
+  }
+}
+
+.toAnim {
+  opacity: 0;
+  transform: translateY(150px);
+  transition: all 1.5s ease 0s;
+}
+.anim {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+h1 span,
+h2 span,
+h3 span {
+  display: inline-block;
+  overflow: hidden;
+  margin-top: 0.5em;
+}
+
+.toAnimTitle {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: all 0.5s ease-in 0s;
+  &.animTitle {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.toAnimTitle2 {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: all 0.5s ease-in 0.2s;
+  &.animTitle2 {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.inactive {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.active {
+  animation: showItem 0.5s ease-out both;
+}
+
+.inactiveFade {
+  opacity: 0;
+  transform: translateY(150px);
+  transition: all 1.5s ease 0s;
+}
+
+.activeFade {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.logoAnim {
+  animation: apparition-logo 1.5s ease forwards, floatAnimation 6s linear infinite 1.5s;
+}
+
+.heroAnim {
+  animation: apparition-hero 1.5s ease forwards;
+}
+
+.main-character {
+  align-self: flex-start;
+}
+
+/* Rotation infini des fleurs */
+#story h2::after,
+.story__article::after,
+#studio h2::before,
+#studio h2::after,
+#colophon::before,
+#colophon::after,
+.site-footer ul::after {
+  transform-origin: center;
+  animation: rotation-flowers 25s linear infinite;
+}
+
+.site-footer {
+  overflow-y: clip;
+  overflow-x: visible;
+}
+
+.story #characters {
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-content: flex-start;
+  width: 100%;
+}
+
+.story #characters div {
+  flex: none;
+}
+
+#studio {
+  div::before {
+    top: 55%;
+  }
+}
+
+/* Section ajouté pour les oscars */
+#oscars {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  padding-top: 30px;
+  width: 75%;
+  margin: auto;
+  @include desktop {
+    flex-wrap: wrap;
+    width: 85%;
+  }
+  img {
+    height: 150px;
+    @include desktop {
+      height: 120px;
+    }
+  }
+  h3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    background-position: center center;
+    background-size: 100% 97%;
+    padding: 1.2em 2.8em;
+    text-align: left;
+    font-size: 36px;
+    line-height: 1.3;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    background-image: url(../assets/images/oscars-bg.png);
+    @include desktop {
+      font-size: 20px;
+      text-align: center;
+      padding: 3.2em 1.8em;
+    }
+  }
+}
+
+.story {
+  #place {
+    background-image: url(../assets/images/Studio_Koukaki-image_place.png);
+    position: relative;
+    overflow: hidden;
+  }
+}
+
+#primary {
+  .parallax-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+#place {
+  .parallax-container {
+    z-index: -1;
+  }
+  .big-cloud {
+    position: absolute;
+    filter: blur(10px);
+    right: 37%;
+    top: 11%;
+    @include tablette {
+      width: 240px;
+    }
+  }
+  .little-cloud {
+    position: absolute;
+    z-index: -1;
+    filter: blur(10px);
+    left: 24%;
+    top: 39%;
+    @include tablette {
+      width: 100px;
+    }
+  }
+}
+
+h2,
+h3 {
+  @include mobile {
+    font-size: 1.8rem;
+  }
+}
+
+p {
+  font-size: 0.9em;
+}

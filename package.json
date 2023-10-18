@@ -1,0 +1,11 @@
+{
+  "name": "foce-child",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass --watch ./stylesheets/main.scss:./dist/style.css"
+  },
+  "author": "",
+  "license": "ISC"
+}
